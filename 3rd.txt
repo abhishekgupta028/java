@@ -1,0 +1,27 @@
+import java.util.*; 
+class Student { 
+private int id; 
+private String name; 
+private double grade; 
+public Student(int id, String name, double grade) { 
+this.id = id; 
+this.name = name; 
+this.grade = grade; 
+} 
+public String toString() { 
+return "Student{ID=" + id + ", Name='" + name + "', Grade=" + grade + "}"; 
+} 
+} 
+public class Main1 { 
+public static void main(String[] args) {  
+List<Student> s = new ArrayList<>(); 
+// Adding Student objects to the collection 
+s.add(new Student(101, "Arun", 85.5)); 
+s.add(new Student(102, "Madhu", 78.0)); 
+s.add(new Student(103, "Aarohi", 92.3)); 
+System.out.println("Student List:"); 
+for (Student x : s) { 
+System.out.println(x); 
+} 
+} 
+}
