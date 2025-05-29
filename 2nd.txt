@@ -1,0 +1,35 @@
+import java.util.*;
+class TensPlaceComparator implements Comparator<Integer>{
+    public int compare(Integer num1, Integer num2){
+        int tensPlace1 = (num1/10)%10;
+        int tensPlace2 = (num2/10)%10;
+        return Integer.compare(tensPlace1, tensPlace2);
+    }
+}
+
+public class RandomNumberGenerator {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the lower bound of the range:");
+        int lower = sc.nextInt();
+        System.out.println("Enter the upper bound of the range:");
+        int upper = sc.nextInt();
+
+        List<Integer> numbers = new ArrayList<>();
+        Random random = new Random();
+
+        for(int i=0; i<20; i++){
+            int num;
+            do{
+                num = random.nextInt(upper - lower + 1) + lower;
+            }
+            while(num%2 != 0 || num%5 != 0);
+            numbers.add(num);
+        }
+        System.out.println("Generated numbers:" + numbers);
+
+        Collections.sort(numbers, new TensPlaceComparator());
+        System.out.println("Sorted based on tens place:" + numbers);
+    }
+}
