@@ -1,0 +1,95 @@
+import java.sql.*; 
+import java.util.Scanner; 
+public class StudentDBOperations { 
+public static void main(String[] args) throws SQLException, ClassNotFoundException { 
+String url = "jdbc:mysql://localhost:3306/studentDB"; // DB URL 
+String user = "root"; 
+String password = "Admin123"; // Replace with your MySQL password 
+Scanner sc = new Scanner(System.in); 
+Class.forName("com.mysql.cj.jdbc.Driver"); 
+Connection con = DriverManager.getConnection(url, user, password); 
+int choice; 
+do { 
+System.out.println("\n--- Student Database Menu ---"); 
+System.out.println("1. Insert"); 
+System.out.println("2. Update"); 
+System.out.println("3. Delete"); 
+System.out.println("4. Search"); 
+System.out.println("5. Exit"); 
+System.out.print("Enter choice: "); 
+choice = sc.nextInt(); 
+switch (choice) { 
+case 1: 
+System.out.print("Enter ID: "); 
+int id = sc.nextInt(); 
+sc.nextLine(); // consume newline 
+System.out.print("Enter Name: "); 
+String name = sc.nextLine(); 
+System.out.print("Enter Branch: "); 
+String branch = sc.nextLine(); 
+System.out.print("Enter Marks: "); 
+float marks = sc.nextFloat(); 
+String insertQuery = "INSERT INTO Students VALUES (?, ?, ?, ?)"; 
+PreparedStatement insertStmt = con.prepareStatement(insertQuery); 
+insertStmt.setInt(1, id); 
+insertStmt.setString(2, name); 
+insertStmt.setString(3, branch); 
+insertStmt.setFloat(4, marks); 
+insertStmt.executeUpdate(); 
+System.out.println("Record Inserted Successfully."); 
+break; 
+case 2: 
+System.out.print("Enter ID to update: "); 
+int uid = sc.nextInt(); 
+sc.nextLine(); 
+System.out.print("Enter new Marks: "); 
+float newMarks = sc.nextFloat(); 
+String updateQuery = "UPDATE Students SET marks = ? WHERE id = ?"; 
+PreparedStatement updateStmt = con.prepareStatement(updateQuery); 
+updateStmt.setFloat(1, newMarks); 
+updateStmt.setInt(2, uid); 
+int updated = updateStmt.executeUpdate(); 
+if (updated > 0) 
+System.out.println("Record Updated Successfully."); 
+else 
+System.out.println("Record Not Found."); 
+break; 
+case 3: 
+System.out.print("Enter ID to delete: "); 
+int did = sc.nextInt(); 
+String deleteQuery = "DELETE FROM Students WHERE id = ?"; 
+PreparedStatement deleteStmt = con.prepareStatement(deleteQuery); 
+deleteStmt.setInt(1, did); 
+int deleted = deleteStmt.executeUpdate(); 
+if (deleted > 0) 
+System.out.println("Record Deleted Successfully."); 
+else 
+System.out.println("Record Not Found."); 
+break; 
+case 4: 
+System.out.print("Enter ID to search: "); 
+int sid = sc.nextInt(); 
+String searchQuery = "SELECT * FROM Students WHERE id = ?"; 
+PreparedStatement searchStmt = con.prepareStatement(searchQuery); 
+searchStmt.setInt(1, sid); 
+ResultSet rs = searchStmt.executeQuery(); 
+if (rs.next()) { 
+System.out.println("ID: " + rs.getInt("id")); 
+System.out.println("Name: " + rs.getString("name")); 
+System.out.println("Branch: " + rs.getString("branch")); 
+System.out.println("Marks: " + rs.getFloat("marks")); 
+} else { 
+System.out.println("Record Not Found."); 
+} 
+break; 
+case 5: 
+System.out.println("Exiting..."); 
+break; 
+default: 
+System.out.println("Invalid choice."); 
+} 
+} while (choice != 5); 
+con.close(); 
+sc.close(); 
+} 
+}
