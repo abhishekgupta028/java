@@ -1,0 +1,58 @@
+public class Main1 { 
+public static void main(String[] args) { 
+// Creating a String 
+String str = "  Java Programming is fun!  "; 
+// 1. length() 
+System.out.println("Length of the string: " + str.length()); 
+// 2. trim() 
+System.out.println("Trimmed string: '" + str.trim() + "'"); 
+// 3. toUpperCase() 
+System.out.println("Uppercase string: " + str.toUpperCase()); 
+// 4. toLowerCase() 
+System.out.println("Lowercase string: " + str.toLowerCase()); 
+// 5. charAt() 
+System.out.println("Character at index 5: " + str.charAt(5)); 
+// 6. contains() 
+System.out.println("Contains 'Java': " + str.contains("Java")); 
+// 7. startsWith() 
+System.out.println("Starts with '  Java': " + str.startsWith("  Java")); 
+// 8. endsWith() 
+System.out.println("Ends with 'fun!': " + str.endsWith("fun!")); 
+// 9. indexOf() 
+System.out.println("Index of 'Programming': " + str.indexOf("Programming")); 
+// 10. lastIndexOf() 
+System.out.println("Last index of 'a': " + str.lastIndexOf('a')); 
+// 11. equals() 
+String str2 = "Java Programming is fun!"; 
+System.out.println("Strings are equal: " + str.equals(str2));   
+// 12. equalsIgnoreCase() 
+System.out.println("Strings are equal (ignoring case): " + str.equalsIgnoreCase("java 
+programming is fun!")); 
+// 13. replace() 
+System.out.println("Replace 'Java' with 'C++': " + str.replace("Java", "C++")); 
+// 14. substring() 
+System.out.println("Substring from index 5: " + str.substring(5)); 
+// 15. substring(start, end) 
+System.out.println("Substring from index 5 to 15: " + str.substring(5, 15)); 
+// 16. split() 
+String[] words = str.split(" "); 
+System.out.println("Split string by spaces: "); 
+for (String word : words) { 
+System.out.println(word); 
+} 
+// 17. valueOf() 
+int num = 123; 
+System.out.println("String representation of number: " + String.valueOf(num)); 
+// 18. concat() 
+System.out.println("Concatenated string: " + str.concat(" Let's code more!")); 
+// 19. isEmpty() 
+System.out.println("Is the string empty? " + str.isEmpty()); 
+// 20. replaceAll() 
+System.out.println("Replace all 'a' with 'o': " + str.replaceAll("a", "o")); 
+// 21. compareTo() 
+System.out.println("Compare to another string: " + str.compareTo(str2)); 
+// 22. compareToIgnoreCase() 
+System.out.println("Compare to another string (ignore case): " + 
+str.compareToIgnoreCase("java programming is fun!")); 
+} 
+}
