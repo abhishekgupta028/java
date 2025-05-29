@@ -1,0 +1,30 @@
+public class Main { 
+public static void main(String[] args) { 
+// Creating a StringBuffer 
+StringBuffer sb = new StringBuffer("  Java Programming is fun!  "); 
+System.out.println("Length of the StringBuffer: " + sb.length()); // 1. length() 
+System.out.println("Capacity of the StringBuffer: " + sb.capacity()); // 2. capacity() 
+sb.append(" Let's code more!"); // 3. append() 
+System.out.println("After append: " + sb); 
+sb.insert(5, "Awesome "); // 4. insert() 
+System.out.println("After insert: " + sb); 
+sb.delete(5, 13); // 5. delete() 
+System.out.println("After delete: " + sb); 
+sb.deleteCharAt(5);  // 6. deleteCharAt() 
+System.out.println("After deleteCharAt: " + sb); 
+sb.replace(5, 15, "Programming"); // 7. replace() 
+System.out.println("After replace: " + sb); 
+sb.reverse(); // 8. reverse() 
+System.out.println("After reverse: " + sb); 
+sb.setLength(10); // 9. setLength() 
+System.out.println("After setLength: " + sb); 
+System.out.println("Character at index 5: " + sb.charAt(5)); // 10. charAt() 
+System.out.println("Index of 'Java': " + sb.indexOf("Java")); // 11. indexOf() 
+System.out.println("Last index of 'a': " + sb.lastIndexOf("a")); // 12. lastIndexOf() 
+System.out.println("Substring from index 5: " + sb.substring(5)); // 13. substring() 
+System.out.println("StringBuffer to String: " + sb.toString()); // 14. toString() 
+// 15. ensureCapacity() 
+sb.ensureCapacity(50); 
+System.out.println("After ensureCapacity(50), capacity: " + sb.capacity());  
+} 
+} 
